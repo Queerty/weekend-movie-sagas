@@ -9,11 +9,12 @@ const dispatch = useDispatch();
 const movies = useSelector(store => store.movies);
 useEffect( () => {
     dispatch({ type: 'FETCH_MOVIES' });
-    dispatch({ type: 'ADD_DETAILS'})
+    // dispatch({ type: 'FETCH_DETAILS'})
 }, [])
     return(
         <>
          {movies.map(movie => {
+            //  if(movie.id === this.movie.id)
                     return (
                         <div key={movie.id} >
                             <h3>{movie.description}</h3>

@@ -29,4 +29,9 @@ function MovieList() {
     );
 }
 
+// fetchDetails() {
+//     dispatch({type: 'FETCH_DETAILS', payload: })
+
+// }
+
 export default MovieList;
