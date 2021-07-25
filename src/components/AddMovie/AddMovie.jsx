@@ -1,12 +1,19 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import {
+    HashRouter as Router,
+    Route,
+    Link,
+    useHistory,
+  } from "react-router-dom";
 
 function AddMovie(){
+    const history = useHistory();
     const dispatch = useDispatch();
     // const [newTitle, setNewTitle] = useState('');
     // const [newPoster, setNewPoster] = useState('');
     // const [newDescription, setNewDescription] = useState('');
-        const genres = useSelector(store => store.genresReducer);
+        // const genres = useSelector(store => store.genresReducer);
         const [newMovie, setNewMovie] = useState({
             title: "",
             poster: "",
@@ -32,8 +39,19 @@ function AddMovie(){
     const handleAddMovie = event => {
         event.preventDefault();
         dispatch({ type: 'ADD_MOVIE', 
-        payload: {title: newMovie.title, poster: newMovie.poster, description: newMovie.description, genre_id: newMovie.genre_id }});
+        payload: {title: newMovie.title, 
+            poster: newMovie.poster, 
+            description: newMovie.description, 
+            genre_id: newMovie.genre_id 
+        }});
+        
         setNewMovie('');
+    }
+
+    const handleCancel = event => {
+        event.preventDefault();
+        history.push('/');
+
     }
 
     return(
@@ -45,6 +63,7 @@ function AddMovie(){
         <input type="text" value={newMovie.description} onChange={handleChange} name="description"/>
         <input type="number" value={newMovie.genre_id} onChange={handleChange} name="genre_id"/>
         <button onClick={handleAddMovie}>Add Movie</button>
+        <button onClick={handleCancel}>Cancel</button>
         </form>
         </>
     )
