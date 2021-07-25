@@ -109,10 +109,10 @@ const storeInstance = createStore(
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
-    <React.StrictMode>
+    
         <Provider store={storeInstance}>
         <App />
-        </Provider>
-    </React.StrictMode>,
+        </Provider>,
+    
     document.getElementById('root')
 );
