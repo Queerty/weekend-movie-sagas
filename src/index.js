@@ -42,10 +42,10 @@ function* fetchGenres() {
 }
 }
 
-function* fetchDetails({id}) {
+function* fetchDetails(action) {
     //get details from DB
     try {
-    const detailsResponse = yield axios.get('/api/details/:id');
+    const detailsResponse = yield axios.get(`/api/details/${action.payload}`);
     console.log('get details:', detailsResponse.data);
     yield put({ type: 'SET_DETAILS', payload: detailsResponse.data})
 } catch (error) {
@@ -85,7 +85,8 @@ const genresReducer = (state = [], action) => {
 }
 
 //Used to store details for clicked movie
-const detailsReducer = (state = [], action) => {
+const detailsReducer = (state = 0, action) => {
+    //payload movie.id
     switch (action.type){
         case 'SET_DETAILS':
             return action.payload;

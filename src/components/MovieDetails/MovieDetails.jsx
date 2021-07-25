@@ -1,35 +1,34 @@
 // import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
 
 function MovieDetails(){
 //movie.description
 const dispatch = useDispatch();
+const details = useSelector(store => store.detailsReducer);
+console.log('this is details', details);
 
-const movies = useSelector(store => store.movies);
-const details = useSelector(store => store.details);
 
-useEffect( () => {
-    dispatch({ type: 'FETCH_MOVIES' });
-}, [])
 
-function handleClick() {
-    dispatch({type: 'FETCH_DETAILS'})
-    
-};
     return(
         <>
-         {movies.map(movie => {
-            //  if(movie.id === this.movie.id)
-                    return (
-                        <div key={movie.id} onClick={handleClick}>
-                            <h3>{movie.description}</h3>
+        <h1>Movie Details</h1>
+        <h2>{details && details[0].title}</h2>
+        <img src={details && details[0].poster}/>
 
-                        </div>
-                    );
-                })}
+
+        {/* {details.map(clickedMovie => {
+            return(
+            
+                <div key={clickedMovie[0].id}>
+                <h2>{clickedMovie[0].title}</h2>
+                <img src={clickedMovie[0].poster} alt={clickedMovie[0].title}/>
+                </div>
+            )
+        })} */}
         </>
-    )
+    );
 }
 
 export default MovieDetails;
