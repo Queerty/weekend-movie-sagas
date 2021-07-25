@@ -1,18 +1,21 @@
 // import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function MovieDetails(){
 //movie.description
 const dispatch = useDispatch();
 
 const movies = useSelector(store => store.movies);
+const details = useSelector(store => store.details);
+
 useEffect( () => {
     dispatch({ type: 'FETCH_MOVIES' });
 }, [])
 
 function handleClick() {
     dispatch({type: 'FETCH_DETAILS'})
+    
 };
     return(
         <>
