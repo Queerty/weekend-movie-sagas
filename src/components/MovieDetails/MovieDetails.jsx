@@ -17,9 +17,14 @@ console.log('this is details', details);
         <h2>{details && details[0].title}</h2>
         <img src={details && details[0].poster}/>
         <h2>{details && details[0].description}</h2>
-        <h2>{details && details.map(movieProp =>{
+        {/* <h2>{details && details.map(movieProp =>{
         return(
-        movieProp.name)})}</h2>
+        movieProp.name)})}</h2> */}
+        <p>Genres:</p>
+         <ul>{details && details.map(movieProp =>{
+        return( <li key={movieProp.name}>
+        {movieProp.name}</li>)})}</ul>
+        
         </>
         )}
 
