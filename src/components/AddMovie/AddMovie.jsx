@@ -93,7 +93,6 @@ function AddMovie(){
           className={classes.selectEmpty}
         >
           <MenuItem value="">
-            <em>None</em>
           </MenuItem>
           <MenuItem value={1}>ADVENTURE</MenuItem>
           <MenuItem value={2}>ANIMATED</MenuItem>
